@@ -1,7 +1,7 @@
 
 function setup(){
 
-let canvas = createCanvas(900,900);
+let canvas = createCanvas(500,500);
 colorMode(HSB, 360, 100, 100);
 rectMode(CENTER);
 
