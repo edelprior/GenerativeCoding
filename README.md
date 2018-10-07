@@ -27,7 +27,6 @@ git add .
 git status
 git log
 git commit -m "First Commit"
-git remote add origin https://github.com/montaynej/workflows.git (Don't need every time)
 git push -u origin master
 ```
 ## Useful Atom Packages
