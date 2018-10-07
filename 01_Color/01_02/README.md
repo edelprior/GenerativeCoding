@@ -4,12 +4,12 @@ A 2D grid with 'rects' on the X and Y axis needs to be drawn, 500 Width, 500 hei
 
 ### What Variables are instaniated?
 *NumberOfColumns* = Amount of Rectangles going across on the X Axis
-<br />
+<br/>
 *NumberOfRows* = Amount of Rectangles going down on the Y Axis
 <br/>
 *StepX* = the length at which each gridX is incremented along the X Axis `100 = Width / NumberOfColumns = StepX`
 <br />
-*StepY* = the length at which each gridY is incremented down the Y Axis  `100 = Heiht / NumberOfRows = StepY`
+*StepY* = the length at which each gridY is incremented down the Y Axis  `100 = Height / NumberOfRows = StepY`
 
 ___
 ## Code Inception // Designing a Loop within a Loop
