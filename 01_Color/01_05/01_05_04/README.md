@@ -1,24 +1,23 @@
-# Color Wheels
+# Pixel Arrays 
 
 
-### What Variables are instaniated?
- *numberOfSteps*  = 20;
- *angleSize* = 360 / numberOfSteps;
- *radius* = 200;
+### LerpColor();
+Requires three parameters ( 1. Start Color 2. End Color 3. 0.5);
+returns a Color Object (last exercise) half way between
 
 ___
-## Thinking about Color Wheels as Triangular Fans
+## Pixel Arrays // Images
 
+Mostly, Images need to be pre-loaded so it's in memory.
+Needs to be put in in LocalHost image.loadImage
+<br />
 
-  ```javascript
-  for (let gridY = 0; gridY < height; gridY += stepY) {
-    for (let gridX = 0; gridX < width; gridX += stepX) {
-      fill(gridX, height - gridY, 100);
-      rect(gridX, gridY, stepX, stepY);
-      }
-    }
-  ```
+An image is a series of Pixels or a PixelArray 
 
+### How to target a specific PixelArray 
+```js
+(gridY + width + gridX) * 4
+```
 ### Using the P5 Reference
 Vertexes need to be used to make Triangles and hence, make circles
 

@@ -1,2 +1,1 @@
-# GenerativeCoding
-Creative Coding // Fourth Year Module
+# Shapes in Generative Design
