@@ -50,10 +50,6 @@ ___
 
 
 ## *Step Two*
-
-
-
-
 ``` javascript
 
 function draw() {
@@ -83,3 +79,26 @@ function draw() {
   }
 }
 ```
+![](images/Pixel_Array_2.png)
+
+
+## *Step Three*
+
+```javascript
+}
+    //pushing the color array
+    var i = 0;
+    for (var gridY = 0; gridY < tileCount; gridY++) {
+      for (var gridX = 0; gridX < tileCount; gridX++) {
+console.log(colors[i]);
+        fill(colors[i]);
+          //fill(200,200,200);
+        rect(gridX * rectSize, gridY * rectSize, rectSize, rectSize);
+        i++;
+      }
+    }
+}```
+![](images/Pixel_Array_3.png)
+
+
+![](images/Pixel_Array_4.png)
