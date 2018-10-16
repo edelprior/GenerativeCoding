@@ -97,7 +97,8 @@ console.log(colors[i]);
         i++;
       }
     }
-}```
+}
+```
 ![](images/Pixel_Array_3.png)
 
 
