@@ -81,6 +81,8 @@ function draw() {
 ```
 ![](images/Pixel_Array_2.png)
 
+___
+___
 
 ## *Step Three*
 
@@ -100,6 +102,12 @@ console.log(colors[i]);
 }
 ```
 ![](images/Pixel_Array_3.png)
+
+
+___
+___
+
+## *Step Four*
 
 
 ![](images/Pixel_Array_4.png)
