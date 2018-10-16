@@ -14,4 +14,4 @@ ___
 Vertexes need to be used to make Triangles and hence, make circles
 
 ### What does it look like on the Screen?
-[]!(css/interpolation.png)
+![](css/interpolation.png)

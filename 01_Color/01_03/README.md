@@ -35,4 +35,4 @@ Using the beginShape() and endShape() functions allow creating more complex form
 beginShape();
   ```
 # What does it look like on the Screen?
-[]!(color_wheel.png)
+![](css/color_wheel.png)
