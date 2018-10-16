@@ -7,7 +7,7 @@
 // Step 1 :: Making a pallette of colors with content and set rules.
 
 
-var colorCount = 60;
+var colorCount = 61;
 var hueValue = [];
 var satValue = [];
 var brightValue = [];
@@ -41,7 +41,7 @@ function draw() {
   // console.log(satValue);
 
   for( i = 0; i < 5; i++) {
-    var xWidth = random(20, 300);
+    var xWidth = random(20, 1000);
     rect(20,20, xWidth, 75);
     fill(hueValue[i], satValue[i], brightValue[i]);
   }
