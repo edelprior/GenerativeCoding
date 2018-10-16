@@ -1,4 +1,4 @@
-# Pixel Arrays 
+# Pixel Arrays Final Result
 
 
 ### LerpColor();
@@ -12,24 +12,74 @@ Mostly, Images need to be pre-loaded so it's in memory.
 Needs to be put in in LocalHost image.loadImage
 <br />
 
-An image is a series of Pixels or a PixelArray 
+An image is a series of Pixels or a PixelArray
 
-### How to target a specific PixelArray 
+### How to target a specific PixelArray
 ```js
 (gridY + width + gridX) * 4
 ```
-### Using the P5 Reference
-Vertexes need to be used to make Triangles and hence, make circles
 
-### What does P5 have to say?
+## *Step One*
 
-All shapes are constructed by connecting a series of vertices. vertex() is used to specify the vertex coordinates for points, lines, triangles, quads, and polygons. It is used exclusively within the beginShape() and endShape() functions.
+ Helpful function that stops draw() running in a loop
+``` javascript
+ noLoop();
+```
+___
 
-<br /> 
+Loads the pixels data into a [] in 'preperation' for image manipulation.
+<br />
 
-Using the beginShape() and endShape() functions allow creating more complex forms. beginShape() begins recording vertices for a shape and endShape() stops recording.
+Returns the value of the value in the [0] array
 
-### What's it look like in the Code?
-  ```javascript
-beginShape();
-  ```
+___
+
+``` javascript
+function draw() {
+img.loadPixels();
+
+
+
+console.log(img.pixels[0]);
+console.log(img);
+}
+```
+
+___
+___
+
+
+## *Step Two*
+
+
+
+
+``` javascript
+
+function draw() {
+  // define the amount of tiles
+  let tileCount = 2;
+  // define the width of each of them (the X value)
+  let rectSize = width / tileCount;
+  img.loadPixels();
+  //empty color[] everytime draw() exec
+  colors = [];
+
+  for (let gridY = 0; gridY < tileCount; gridY++) {
+    for (let gridX = 0; gridX < tileCount; gridX++) {
+      //pixel value along the X and Y axis
+      let pixelX = int(gridX * rectSize);
+      let pixelY = int(gridY * rectSize);
+      // Allowing the X and Y value to be used to target specific indexes in the []
+      // 4 vars in each object hence *4
+      var i = (pixelY * img.width + pixelX * 4);
+
+      // making a color object
+      var c = color(img.pixels[i], img.pixels[i + 1], img.pixels[i + 2], img.pixels[i + 3]);
+      colors.push(c);
+
+      console.log(colors);
+    }
+  }
+}
+```
