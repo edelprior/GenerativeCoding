@@ -1,4 +1,4 @@
-# Colors in a Grid
+# Color spectrum in a Grid
 
 A 2D grid with 'rects' on the X and Y axis needs to be drawn, 500 Width, 500 height.
 
@@ -24,7 +24,7 @@ ___
   ```
 
 ### Using the P5 Reference
-MouseX and MouseY are predefined variables used in P5. 
+MouseX and MouseY are predefined variables used in P5.
 They can be very useful, and are gonna be used a lot throughout this module, so understand them _properly_
 
 ### What does P5 have to say?
@@ -36,3 +36,6 @@ The system variable mouseX always contains the current horizontal position of th
   rect(0, 0, mouseX, mouseX);
   ```
   Syntax for rectangle: ( X Location, Y Location, Width of Rect, Height of Rect);
+
+# What does it look like on the Screen?
+[]!(css/color_grid.png)

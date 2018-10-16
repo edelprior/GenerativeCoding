@@ -4,13 +4,12 @@
    Notes
 */
 
-//function setup() {
+function setup() {
 
   let canvas = createCanvas(500, 500);
   colorMode(HSB, 360, 100, 100);
   rectMode(CENTER);
   noStroke();
-
 }
 
 function draw() {
