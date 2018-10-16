@@ -4,12 +4,10 @@
    Notes
 */
 
-// Step 2 :: Making a pallette of colors with content and set rules.
+// Step 2 :: Making a pallette of colors with no rules (random X, random Y location)
 
 
-var boxCountX = 100;
-var boxCountY = 10;
-
+var colorCount = 20;
 
 var hueValue = [];
 var satValue = [];
@@ -21,83 +19,61 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 200);
   noStroke();
-  //noLoop();
+  noLoop();
 
-  for (i = 0; i < boxCountX; i++) {
-    if (i % 2 == 0) {
-      hueValue[i] = random(50, 150);
-      satValue[i] = 150;
-      brightValue[i] = random(20, 40);
-    } else {
-      hueValue[i] = 100;
-      satValue[i] = random(40, 80);
-      brightValue[i] = random(60, 100);
-    }
+  for (i = 0; i < 5; i++) {
+    hueValue[i] = random(50, 150);
+    satValue[i] = 150;
+    brightValue[i] = random(20, 40);
   }
 }
+
 
 function draw() {
 
-//  var mX = constrain(mouseX, 0, width);
-//  var mY = constrain(mouseY, 0, height);
-
+  // ------ area tiling ------
+  // count tiles
   var counter = 0;
+  // row count and row height
+  var tileCount = int(random(5));
+  var tileHeight = height / tileCount;
 
-  var currentBoxCountX = int((map(20, 0, width, 1, boxCountX)));
-  var currentBoxCountY = int((map(20, 0, height, 1, boxCountY)));
-  var boxWidth = width / currentBoxCountX;
-  var boxHeight = height / currentBoxCountY;
+  // seperate each line in parts
+  for (var i = tileCount; i >= 0; i--) {
+    // how many fragments
+    var partCount = i + 1;
+    var parts = [];
 
-for(var gridY = 0; gridY < boxCountY; gridY++) {
-  for(var gridX = 0; gridX < boxCountX; gridX++){
-    var positionX = boxWidth * gridX;
-    var positionY = boxHeight * gridY;
-    var index = counter % currentBoxCountX;
+    for (var b = 0; b < partCount; b++) {
+      // sub fragments or not?
+        var fragments = int(random(2));
+        partCount = partCount + fragments;
+        for (var c = 0; c < fragments; c++) {
+          parts.push(random(2));
+        }
+    }
 
-    fill((hueValue[index], satValue[index], brightValue[index]));
-    rect(positionX, positionY, boxWidth, boxHeight);
-    counter++;
+    // add all subparts
+    var sumPartsTotal = 0;
+    for (var b = 0; b < partCount; b++) {
+      sumPartsTotal += parts[b];
+    }
+
+    // draw rects
+    var sumPartsNow = 0;
+    for (var b = 0; b < parts.length; b++) {
+      sumPartsNow += parts[b];
+
+      var xPosition = map(sumPartsNow, 0, sumPartsTotal, 0, width);
+      var yPosition = tileHeight * i;
+      var w = -map(parts[b], 0, sumPartsTotal, 0, width);
+      var h = tileHeight;
+
+      var index = counter % colorCount;
+      fill(hueValue[index], satValue[index], brightValue[index]);
+      rect(xPosition, yPosition, w, h);
+
+      counter++;
+    }
   }
 }
-}
-//   var lineCount = int(random(5, 30));
-//   var lineHeight = height / lineCount;
-//
-//   // console.log(hueValue);
-//   // console.log(satValue);
-//   for (var i = lineCount; i >= 0; i--) {
-//     var partCount = i + 1;
-//     parts = [];
-//     parts.push(random(2, 20));
-//   }
-//
-//   var totalSum = 0;
-//   for (i = 0; i < parts.length; i++) {
-//     totalSum = totalSum + parts[i];
-//   }
-//
-// }
-
-
-
-
-
-// Will have to run on  a server (download live-server package in Atom)
-// access by going to command pallette [cmd + shift + P] and typing live-server
-//  // access through folder directory
-//
-//  var sumPartsNow = 0;
-// for (var ii = 0; ii < parts.length; ii++) {
-//   sumPartsNow += parts[ii];
-//
-//   var x = map(sumPartsNow, 0, sumPartsTotal, 0, width);
-//   var y = rowHeight * i;
-//   var w = -map(parts[ii], 0, sumPartsTotal, 0, width);
-//   var h = rowHeight;
-//
-//   var index = counter % colorCount;
-//   var col = color(hueValues[index], saturationValues[index], brightnessValues[index]);
-//   fill(col);
-//   rect(x, y, w, h);
-//
-//   counter++;
