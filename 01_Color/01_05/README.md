@@ -123,4 +123,4 @@ console.log(colors[i]);
     }
 }
 ```
-![](images/Pixel_Array_4.png)
+![](images/PIxel_Array_4.png)
