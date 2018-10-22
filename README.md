@@ -1,10 +1,8 @@
-# Creative Coding // Fourth Year
-
+# Creative Coding
+___
  ### Following the work and book of Hartmut Bohnacker. 
 
 1. [Introducing Color to the Screen and the User](01_Color/)
-2. [Shapes On the Screen](02_Shapes/)
-
 
 
 ## Useful GIT command

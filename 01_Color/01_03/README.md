@@ -1,4 +1,4 @@
-# Color Wheels
+# Color Spectrum in a Circle
 
 
 ### What Variables are instaniated?
@@ -26,7 +26,7 @@ Vertexes need to be used to make Triangles and hence, make circles
 
 All shapes are constructed by connecting a series of vertices. vertex() is used to specify the vertex coordinates for points, lines, triangles, quads, and polygons. It is used exclusively within the beginShape() and endShape() functions.
 
-<br /> 
+<br />
 
 Using the beginShape() and endShape() functions allow creating more complex forms. beginShape() begins recording vertices for a shape and endShape() stops recording.
 
@@ -34,3 +34,5 @@ Using the beginShape() and endShape() functions allow creating more complex form
   ```javascript
 beginShape();
   ```
+# What does it look like on the Screen?
+![](css/color_wheel.png)
