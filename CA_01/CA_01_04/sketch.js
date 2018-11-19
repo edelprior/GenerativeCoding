@@ -1,15 +1,14 @@
 var inputText = "GEN"
-var fontSize = 500;
+var fontSize = 400;
 var spacing = 20; // line height
 var kerning = 1; // between letters
-var fontSizeStatic = false;
-var blackAndWhite = false;
 var img;
 var pointDensity = 1;
 var textImg;
+var sineImg;
 var font;
 var yoff = 0.0;
-var textTyped = ["GEN"];
+var textTyped = ["generative design"];
 
 
 function preload() {
@@ -19,35 +18,47 @@ function preload() {
 
 function setup() {
   createCanvas(1240, 1748);
-  setupText();
-  background(200);
-  //noCursor();
-//  checkEdges();
+  makeTextImage();
+  makeSineImage();
+  background(255);
+  noFill();
 }
 
+
 /// Creating the "image" the text behind
-function setupText() {
+function  makeTextImage() {
   // Controls the small words "generative"
   textImg = createGraphics(1240, 1748);
   textImg.pixelDensity(1);
   textImg.background(255);
   textImg.textFont(font2);
-//  textImg.textLeading(1);
+  textImg.textLeading(1);
   textImg.textSize(fontSize);
   textImg.text(textTyped, 0, -20, 400,750);
-    textImg.loadPixels();
+  textImg.loadPixels();
+}
+
+/// Creating the "image" the text behind
+function  makeSineImage() {
+  // Controls the small words "generative"
+  sineImg = createGraphics(1240, 1748);
+  sineImg.pixelDensity(1);
+  sineImg.background(255);
+  sineImg.loadPixels();
+  sineImg.makeSineWave();
 }
 
 
-function draw() {
-// background(255);
 
-  textImg.loadPixels();
+
+function draw() {
+makeSineWave();
+
   var x = 0;
-  var y = 1;
+  var y = 0;
   var counter = 10;
 
-  while (y < 1748) {
+  while (y < windowHeight) {
 
     var imgX = round(map(x, 0, width, 0, textImg.width));
     var imgY = round(map(y, 0, height, 0, textImg.height));
@@ -55,19 +66,10 @@ function draw() {
 
     push();
     translate(x, y);
+    fill(c); // here to put the if function
 
-    if (fontSizeStatic) {
-      textSize(fontSizeMax);
-      if (blackAndWhite) {
-        fill(255);
-      }
-    }
-     else {
-      fill(c);
-    }
-
-    var letter = inputText.charAt(counter);
-    text(letter, 100, 100, 10);
+  var letter = inputText.charAt(counter);
+    text(letter, 10, 80, 450);
     var letterWidth = textWidth(letter) + kerning;
     x += letterWidth;
 
@@ -83,13 +85,31 @@ function draw() {
       counter = 0;
     }
 }
-//  noLoop();
 }
 
 
- // checkEdges = function() {
- //    if (textImg.width > 1240) {
- //      imgY += textImg.height+100;
- //
- //      }
- //    }
+function makeSineWave() {
+    stroke(255,0,0);
+    strokeWeight(5);
+    var startY = height /floor(random(1, 30));
+
+  for (var i = 0; i < 1; i++) {
+    var amount = 500;
+    var frequency = random(1.0) / 15;
+    var offset = random(200) + 5;
+
+  }
+
+  beginShape();
+       vertex(0, startY);
+          for (var c = 1; c < amount; c++) {
+               var sinoffset = sin(frequency * c);
+               var sinX = c * (width / amount);
+               var sinY = startY + sinoffset * offset;
+
+               bezierVertex(sinX, sinY, sinX, sinY - 1, sinX, sinY);
+    }
+  endShape();
+  noStroke();
+  noLoop();
+  }
