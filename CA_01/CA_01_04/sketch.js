@@ -1,3 +1,8 @@
+
+
+// ----- TRYING TO MAKE A SINE FUNCTION TO CREATE THE GRAPHIC
+
+
 var inputText = "GEN"
 var fontSize = 400;
 var spacing = 20; // line height
