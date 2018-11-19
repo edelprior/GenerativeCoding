@@ -1,6 +1,4 @@
-// CA Step One
-// Hard coding out values
-
+// simple version of sine wave
 function setup() {
   createCanvas(1240, 1748);
   noFill();
