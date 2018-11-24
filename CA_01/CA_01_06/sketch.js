@@ -1,4 +1,4 @@
-var inputText = "Generative"
+var inputText = "Generative";
 var fontSize = 500;
 var spacing = 20; // line height
 var kerning = 1; // between letters
@@ -10,7 +10,6 @@ var textImg;
 var font;
 var yoff = 0.0;
 var textTyped = ["G E N E R A T I V E "];
-
 
 function preload() {
   font = loadFont("data/WorkSans-ExtraLight.ttf");
@@ -37,18 +36,15 @@ function setupText() {
   textImg.loadPixels();
 }
 
-
-
 function draw() {
- background(255);
+  background(205);
 
   textImg.loadPixels();
-  var x = - 500;
+  var x = -500;
   var y = 1;
   var counter = 10;
 
   while (y < 1748) {
-
     var imgX = round(map(x, 0, width, 0, textImg.width));
     var imgY = round(map(y, 0, height, 0, textImg.height));
     var c = color(textImg.get(imgX, imgY));
@@ -87,13 +83,11 @@ function draw() {
       counter = 0;
     }
   }
-//  noLoop();
+  //  noLoop();
 }
 
-
- checkEdges = function() {
-    if (textImg.width > 1240) {
-      imgY += textImg.height+100;
-
-      }
-    }
+checkEdges = function() {
+  if (textImg.width > 1240) {
+    imgY += textImg.height + 100;
+  }
+};

@@ -1,59 +1,76 @@
-var colors = [];
+// CA Step One
+// Hard coding out values
+// trying to get generated sin WAVE
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1240, 1748);
   noFill();
-  addColors();
-  smooth(8);
-  background(255);
-  noLoop();
-}
-
-function addColors() {
-  var c;
-  c = color(0, 138, 176);
-  colors[0] = c;
-  c = color(241, 100, 93);
-  colors[1] = c;
-  c = color(0, 176, 133);
-  colors[2] = c;
-  c = color(233, 108, 31);
-  colors[3] = c;
-  c = color(241, 114, 172);
-  colors[4] = c;
-  c = color(222, 57, 108);
-  colors[5] = c;
-  c = color(231, 206, 0);
-  colors[6] = c;
-  c = color(72, 22, 108);
-  colors[7] = c;
-  c = color(44, 164, 74);
-  colors[8] = c;
-}
-
-function getRandomColor() {
-  var i = Math.floor(random(colors.length));
-  var c = colors[i];
-  return c;
+  background(205);
+  //noLoop()
+  //  frameRate(0.5);
 }
 
 function draw() {
-  makeRibbons();
+  //  makeRibbons();
+  //  makeSineWave();
+  makeRandoms();
 }
 
 function makeRibbons() {
-  for (var i = 0; i < random(10) + 10; i++) {
-    var strokeW = random(3) + 3;
+  stroke(255, 0, 0);
+  var startY = height / 2;
+  startY += 1;
+  var frequency = 0.03; // slightest change to 0.04
+  var offset = 205;
 
+  beginShape();
+  vertex(0, startY);
+  for (var x = 11; x < windowWidth; x++) {
+    var sinoffset = sin(frequency * x);
+    var sinX = x * (width / 600);
+    var sinY = startY + sinoffset * offset;
+    sinX += 1;
+    bezierVertex(sinX, sinY, sinX, sinY - 1, sinX, sinY);
+  }
+  endShape();
+}
+
+function makeSineWave() {
+  stroke(255, 0, 0, 90);
+  strokeWeight(10);
+  var startY = 250;
+
+  for (var i = 0; i < 1; i++) {
     var amount = 500;
-    var frequency = random(1.0) / 15;
+    var frequency = 0.04;
+    var offset = 23;
+  }
+
+  beginShape();
+  vertex(0, startY);
+  for (var c = 1; c < amount; c++) {
+    var sinoffset = sin(frequency * c);
+    var sinX = c * (width / amount);
+    var sinY = startY + sinoffset * offset;
+
+    bezierVertex(sinX, sinY, sinX, sinY - 1, sinX, sinY);
+  }
+  endShape();
+  noStroke();
+  noLoop();
+}
+
+function makeRandoms() {
+  for (var i = 0; i < 20; i++) {
+    var strokeW = random(7) + 3;
+
+    var amount = 400;
+    var frequency = random(0.75) / 15;
     var offset = random(200) + 5;
 
-    var col = getRandomColor();
-
     strokeWeight(strokeW);
-    stroke(col, 180);
-    var startY = height / 2;
+    stroke(255, 0, 0, 50);
+    var startY = random(5, 1748);
     beginShape();
     vertex(0, startY);
     for (var c = 1; c < amount; c++) {
@@ -63,5 +80,6 @@ function makeRibbons() {
       bezierVertex(sinX, sinY, sinX, sinY - 1, sinX, sinY);
     }
     endShape();
+    noLoop();
   }
 }
