@@ -1,4 +1,6 @@
-// ----- TRYING TO MAKE A SINE FUNCTION TO CREATE THE GRAPHIC
+// -----INVERTED
+
+
 
 // * * * * *
 // Variables used for bottom layer type
@@ -7,7 +9,7 @@
 var inputText = "Generative Gestaltung";
 var fontSize = 360;
 var spacing = 10; // line height
-var kerning = 0.75; // between letters
+var kerning = 0.95; // between letters
 var textImg;
 var font;
 var textTyped = ["Gener ative Design"];
@@ -21,7 +23,7 @@ function makeTextImage() {
   textImg.background(255);
   textImg.textFont(font2);
   textImg.textSize(fontSize);
-  textImg.text(textTyped, 0, 0, 0, 2000);
+  textImg.text(textTyped, 0, 200, 0, 2000);
 }
 function preload() {
   font = loadFont("data/WorkSans-ExtraLight.ttf");
@@ -31,13 +33,13 @@ function preload() {
 function setup() {
   createCanvas(1240, 1748);
   makeTextImage();
-  background(255);
+  background(0);
   noFill();
 }
 
 function draw() {
+  // scale(0.5);
   drawletters();
-
   makeSineWave();
 }
 
@@ -51,15 +53,17 @@ function drawletters() {
   while (y < 1748) {
     var imgX = round(map(x, 0, width, 0, textImg.width));
     var imgY = round(map(y, 0, height, 0, textImg.height));
+//console.log(imgX);
+//console.log(imgY);
     var c = color(textImg.get(imgX, imgY));
+    //var c = color(255,0,0);
+    //var c = color(textImg.get(1721, 528));
+
 
     push();
     translate(x, y);
-    if ((imgY = (255, 0, 0))) {
-      fill(0);
-    } else {
-      fill(c);
-    }
+    fill(c);
+
 
     var letter = inputText.charAt(counter);
     text(letter, 0, 0, 1000);
@@ -100,6 +104,7 @@ function makeSineWave() {
 
     beginShape();
     vertex(0, startY);
+// colorInterpolation
     for (var c = 1; c < amount; c++) {
       var sinoffset = sin(frequency * c);
       var sinX = c * (width / amount);
@@ -108,6 +113,6 @@ function makeSineWave() {
     }
     endShape();
     noLoop();
-    noStroke();
+    //noStroke();
   }
 }

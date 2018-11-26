@@ -3,7 +3,7 @@
 // * * * * *
 // Variables used for bottom layer type
 // * * * * *
-
+var img;
 var inputText = "Generative Gestaltung";
 var fontSize = 360;
 var spacing = 10; // line height
@@ -14,15 +14,7 @@ var textTyped = ["Gener ative Design"];
 
 // * * *
 
-function makeTextImage() {
-  // Controls the small words "generative"
-  textImg = createGraphics(1240, 1748);
-  textImg.pixelDensity(1);
-  textImg.background(255);
-  textImg.textFont(font2);
-  textImg.textSize(fontSize);
-  textImg.text(textTyped, 0, 0, 0, 2000);
-}
+
 function preload() {
   font = loadFont("data/WorkSans-ExtraLight.ttf");
   font2 = loadFont("data/WorkSans-Bold.ttf");
@@ -30,17 +22,30 @@ function preload() {
 
 function setup() {
   createCanvas(1240, 1748);
-  makeTextImage();
+
   background(247, 247, 247);
   noFill();
+ textAlign(LEFT, CENTER);
+textImg = createGraphics(1240, 1748);
+  //print(img.width + '• ' + img.height);
 }
 
 function draw() {
+  makeTextImage();
   drawletters();
   makeSineWave();
+
 }
 
 // Creating the "image" the text behind
+function makeTextImage() {
+  // Controls the small words "generative"
+  textImg.pixelDensity(1);
+  textImg.background(255);
+  textImg.textFont(font2);
+  textImg.textSize(fontSize);
+  textImg.text(textTyped, 0, 0, 0, 2000);
+}
 
 function drawletters() {
   var x = 0;
@@ -80,21 +85,20 @@ function drawletters() {
 }
 
 function makeSineWave() {
-  for (var i = 0; i < 25; i++) {
-    var strokeW = random(50);
-
+  for (var i = 0; i < 15; i++) {
     var amount = 200;
     var frequency = 0.04;
     var offset = 200;
-    rotate(30);
-    blendMode(LIGHTEST);
-    strokeWeight(strokeW);
-    stroke(225, 0, 0, random(10, 95));
+
+    blendMode(DARKEST);
+    strokeWeight(random(50));
+    stroke(0, 0, 255, random(10, 95));
 
     var startY = random(5, 1748);
 
     beginShape();
-    scale(1);
+  //  scale(1);
+    //rotate(65);
     vertex(0, startY);
     for (var c = 1; c < amount; c++) {
       var sinoffset = sin(frequency * c);
@@ -104,6 +108,6 @@ function makeSineWave() {
     }
     endShape();
     noLoop();
-    noStroke();
+  //  noStroke();
   }
 }
