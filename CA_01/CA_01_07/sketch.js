@@ -7,7 +7,7 @@
 var inputText = "Generative Gestaltung";
 var fontSize = 360;
 var spacing = 10; // line height
-var kerning = 0.75; // between letters
+var kerning = 0.55; // between letters
 var textImg;
 var font;
 var textTyped = ["Gener ative Design"];
@@ -31,14 +31,13 @@ function preload() {
 function setup() {
   createCanvas(1240, 1748);
   makeTextImage();
-  background(247, 247, 247);
+  background(255);
   noFill();
 }
 
 function draw() {
-  drawletters();
-
   makeSineWave();
+  drawletters();
 }
 
 // Creating the "image" the text behind
@@ -81,15 +80,17 @@ function drawletters() {
 }
 
 function makeSineWave() {
-  for (var i = 0; i < 35; i++) {
-    var strokeW = random(20);
+  scale(1);
+  rotate(165);
+  for (var i = 0; i < 15; i++) {
+    var strokeW = random(50);
 
-    var amount = 400;
-    var frequency = random(0.75) / 15;
-    var offset = random(200) + 5;
+    var amount = 300;
+    var frequency = random(0.03);
+    var offset = random(205);
 
     strokeWeight(strokeW);
-    stroke(255, 0, 0, random(10, 95));
+    stroke(0, 0, 255, random(10, 95));
 
     var startY = random(5, 1748);
 
