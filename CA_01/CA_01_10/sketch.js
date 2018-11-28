@@ -33,7 +33,7 @@ textImg = createGraphics(1240, 1748);
 function draw() {
   makeTextImage();
   drawletters();
-  makeSineWave();
+  //makeSineWave();
 
 }
 
@@ -42,6 +42,7 @@ function makeTextImage() {
   // Controls the small words "generative"
   textImg.pixelDensity(1);
   textImg.background(255);
+  textImg.fill(255,0,0);
   textImg.textFont(font2);
   textImg.textSize(fontSize);
   textImg.text(textTyped, 0, 0, 0, 2000);
@@ -59,10 +60,7 @@ function drawletters() {
 
     push();
     translate(x, y);
-    if ((imgY = (255, 0, 0))) {
-      fill(0);
-    } else {
-      fill(c);
+    fill(c);
     }
 
     var letter = inputText.charAt(counter);
@@ -82,32 +80,31 @@ function drawletters() {
       counter = 0;
     }
   }
-}
 
-function makeSineWave() {
-  for (var i = 0; i < 15; i++) {
-    var amount = 200;
-    var frequency = 0.04;
-    var offset = 200;
 
-    blendMode(DARKEST);
-    strokeWeight(random(50));
-    stroke(0, 0, 255, random(10, 95));
-
-    var startY = random(5, 1748);
-
-    beginShape();
-  //  scale(1);
-    //rotate(65);
-    vertex(0, startY);
-    for (var c = 1; c < amount; c++) {
-      var sinoffset = sin(frequency * c);
-      var sinX = c * (width / amount);
-      var sinY = startY + sinoffset * offset;
-      bezierVertex(sinX, sinY, sinX, sinY - 1, sinX, sinY);
-    }
-    endShape();
-    noLoop();
-  //  noStroke();
-  }
-}
+// function makeSineWave() {
+//   for (var i = 0; i < 15; i++) {
+//     var amount = 200;
+//     var frequency = 0.04;
+//     var offset = 200;
+//
+//     blendMode(DARKEST);
+//     strokeWeight(random(50));
+//     stroke(0, 0, 255, random(10, 95));
+//
+//     var startY = random(5, 1748);
+//
+//     beginShape();
+//   //  scale(1);
+//     //rotate(65);
+//     vertex(0, startY);
+//     for (var c = 1; c < amount; c++) {
+//       var sinoffset = sin(frequency * c);
+//       var sinX = c * (width / amount);
+//       var sinY = startY + sinoffset * offset;
+//       bezierVertex(sinX, sinY, sinX, sinY - 1, sinX, sinY);
+//     }
+//     endShape();
+//     noLoop();
+//   //  noStroke();
+//   }
