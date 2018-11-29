@@ -9,7 +9,7 @@ var pointDensity = 8;
 var textImg;
 var font;
 var yoff = 0.0;
-var textTyped = ["G E N E R A T I V E "];
+var textTyped = ["Generative Design "];
 
 function preload() {
   font = loadFont("data/WorkSans-ExtraLight.ttf");
@@ -30,6 +30,7 @@ function setupText() {
   textImg = createGraphics(1240, 1748);
   textImg.pixelDensity(1);
   textImg.background(255);
+  textImg.fill(255,0,0);
   textImg.textFont(font2);
   textImg.textSize(fontSize);
   textImg.text(textTyped, 150, fontSize + 50);
@@ -37,7 +38,7 @@ function setupText() {
 }
 
 function draw() {
-  background(205);
+  background(255);
 
   textImg.loadPixels();
   var x = -500;
