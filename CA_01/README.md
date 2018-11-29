@@ -1,4 +1,4 @@
-## Iterations
+## Live Demonstrations
 
 1. [Sine Wave](https://edelprior.github.io/GenerativeCoding/CA_01/CA_01_01/index.html)
 2. [Sine Wave and Location](https://edelprior.github.io/GenerativeCoding/CA_01/CA_01_02/index.html)
