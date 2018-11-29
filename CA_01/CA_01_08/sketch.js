@@ -1,7 +1,9 @@
-// - - - - -
-// - - - - -  TYPE WITH INTEROPLOATION
-
-//
+// CA_01_08
+// Edel Prior
+// N00153748
+// Brief = Create a book cover with p5 for a book about Generative Design and Color Theory
+// Original idea = working with Sine Waves and Color to create an interesting and relevant cover
+// Introducing Interpolation with the type created within the code
 
 var inputText = "Generative Gestaltung";
 var fontSize = 280;

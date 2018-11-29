@@ -1,8 +1,9 @@
-// ----- TRYING TO MAKE A SINE FUNCTION TO CREATE THE GRAPHIC
-
-// * * * * *
-// Variables used for bottom layer type
-// * * * * *
+// CA_01_07
+// Edel Prior
+// N00153748
+// Brief = Create a book cover with p5 for a book about Generative Design and Color Theory
+// Original idea = working with Sine Waves and Color to create an interesting and relevant cover
+// Bringing back in the Sine Wave as a function
 
 var inputText = "Generative Gestaltung";
 var fontSize = 360;
@@ -23,10 +24,15 @@ function makeTextImage() {
   textImg.textSize(fontSize);
   textImg.text(textTyped, 0, 2000);
 }
+
+// * * *
+
 function preload() {
   font = loadFont("data/WorkSans-ExtraLight.ttf");
   font2 = loadFont("data/WorkSans-Bold.ttf");
 }
+
+// * * *
 
 function setup() {
   createCanvas(1240, 1748);

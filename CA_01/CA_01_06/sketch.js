@@ -1,4 +1,10 @@
-// O6
+// CA_01_06
+// Edel Prior
+// N00153748
+// Brief = Create a book cover with p5 for a book about Generative Design and Color Theory
+// Original idea = working with Sine Waves and Color to create an interesting and relevant cover
+// Introducing Text
+// Insiration from generative-gestaltung.de
 
 var inputText = "Generative";
 var fontSize = 500;
@@ -29,6 +35,9 @@ function setup() {
 /// Creating the "image" the text behind
 function setupText() {
   // Controls the small words "generative"
+  // createGraphics()
+  //Creates and returns a new p5.Renderer object
+  // same thing as bringing in an image with "Generative" typed in repeat across the screen
   textImg = createGraphics(1240, 1748);
   textImg.pixelDensity(1);
   textImg.background(255);

@@ -1,4 +1,10 @@
-// ----- BRINGING THE SINE WAVE IS AN IMAGE THAT IS STORED IN MEMORY
+// CA_01_05
+// Edel Prior
+// N00153748
+// Brief = Create a book cover with p5 for a book about Generative Design and Color Theory
+// Original idea = working with Sine Waves and Color to create an interesting and relevant cover
+// Attempt at creating a sine wave object as an image in p5 using createGraphics()
+// large amount of trigonometry involved with the sine wave so had to rethink how to bring in the Wave
 
 var inputText = "GEN";
 var fontSize = 200;

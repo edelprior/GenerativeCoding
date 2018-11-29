@@ -1,8 +1,9 @@
-// ----- TRYING TO MAKE A SINE FUNCTION TO CREATE THE GRAPHIC
-
-// * * * * *
-// Variables used for bottom layer type
-// * * * * *
+// CA_01_09
+// Edel Prior
+// N00153748
+// Brief = Create a book cover with p5 for a book about Generative Design and Color Theory
+// Original idea = working with Sine Waves and Color to create an interesting and relevant cover
+// Using BlendMode to manipulate the sinewave onto the text appropriately
 
 var inputText = "Generative Gestaltung";
 var fontSize = 360;

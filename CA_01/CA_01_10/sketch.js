@@ -1,7 +1,10 @@
-//
-// - - - - -
-// - - - - -  CA FINAL WORKING
-//
+// CA_01_10
+// Edel Prior
+// N00153748
+// Brief = Create a book cover with p5 for a book about Generative Design and Color Theory
+// Changed Text to suit A4 Book Cover
+// Different variations with each reload as the colors of the sine waves are random
+
 var inputText = "Generative Gestaltung";
 var fontSize = 400;
 var spacing = 12; // line height

@@ -1,13 +1,18 @@
-// CA Step One
+// CA_01_02
+// Edel Prior
+// N00153748
+// Brief = Create a book cover with p5 for a book about Generative Design and Color Theory
+// Original idea = working with Sine Waves and Color to create an interesting and relevant cover
 // Hard coding out values
-// trying to get generated sin WAVE
+// trying to get randomly generated sin wave with hardcoded values
+// introducing framerate for animation
 
 function setup() {
   createCanvas(1240, 1748);
   noFill();
   background(205);
   //noLoop()
-  //  frameRate(0.5);
+  // frameRate(0.5);
 }
 
 function draw() {

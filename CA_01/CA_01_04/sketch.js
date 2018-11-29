@@ -1,4 +1,11 @@
-// ----- Simple sine Wave (1)
+// CA_01_04
+// Edel Prior
+// N00153748
+// Brief = Create a book cover with p5 for a book about Generative Design and Color Theory
+// Original idea = working with Sine Waves and Color to create an interesting and relevant cover
+// simple version of sine wave
+// Simple sine Wave coded with a line rather than a bezier Curve // allows for an interesting graphic made of strokes
+
 var xstep = 2;
 var lastx = -999;
 var lasty = -999;
