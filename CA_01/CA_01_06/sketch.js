@@ -1,3 +1,5 @@
+// O6
+
 var inputText = "Generative";
 var fontSize = 500;
 var spacing = 20; // line height
@@ -30,7 +32,7 @@ function setupText() {
   textImg = createGraphics(1240, 1748);
   textImg.pixelDensity(1);
   textImg.background(255);
-  textImg.fill(255,0,0);
+  textImg.fill(255, 0, 0);
   textImg.textFont(font2);
   textImg.textSize(fontSize);
   textImg.text(textTyped, 150, fontSize + 50);

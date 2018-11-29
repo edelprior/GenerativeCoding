@@ -1,46 +1,69 @@
-// ----- TRYING TO MAKE A SINE FUNCTION TO CREATE THE GRAPHIC
+// - - - - -
+// - - - - -  TYPE WITH INTEROPLOATION
 
-// * * * * *
-// Variables used for bottom layer type
-// * * * * *
+//
 
 var inputText = "Generative Gestaltung";
-var fontSize = 360;
-var spacing = 10; // line height
+var fontSize = 280;
+var spacing = 20; // line height
 var kerning = 0.55; // between letters
 var textImg;
 var font;
-var textTyped = ["Gener ative Design"];
-
+var firstWord = ["Gener"];
+var secondWord = ["ative"];
+var thirdWord = ["Des"];
+var fourthWord = ["ign"];
+var A4Width = 1240;
+var A4Height = 1748;
 // * * *
 
-function makeTextImage() {
-  // Controls the small words "generative"
-  textImg = createGraphics(1240, 1748);
-  textImg.pixelDensity(1);
-  textImg.background(255);
-  textImg.textFont(font2);
-  textImg.textSize(fontSize);
-  textImg.text(textTyped, 0, 0, 0, 2000);
-}
 function preload() {
   font = loadFont("data/WorkSans-ExtraLight.ttf");
   font2 = loadFont("data/WorkSans-Bold.ttf");
 }
 
 function setup() {
-  createCanvas(1240, 1748);
+  createCanvas(A4Width, A4Height);
   makeTextImage();
-  background(247, 247, 247);
+  background(255);
   noFill();
 }
 
 function draw() {
   drawletters();
-  makeSineWave();
+  //  makeSineWave();
 }
 
-// Creating the "image" the text behind
+function makeTextImage() {
+  // Controls the small words "generative"
+  textImg = createGraphics(1240, 1748);
+  textImg.pixelDensity(1);
+  textImg.background(255);
+
+  textImg.textFont(font2);
+  //  textImg.textSize(fontSize);
+
+  from = color(236, 47, 94);
+  to = color(47, 236, 189);
+  c1 = lerpColor(from, to, 0.33);
+  c2 = lerpColor(from, to, 0.66);
+
+  textImg.fill(from);
+  textImg.textSize(350);
+  textImg.text(firstWord, 0, 275);
+
+  textImg.fill(c1);
+  textImg.textSize(390);
+  textImg.text(secondWord, 0, 615);
+
+  textImg.fill(c2);
+  textImg.textSize(280);
+  textImg.text(thirdWord, 0, 1230);
+
+  textImg.fill(to);
+  textImg.textSize(280);
+  textImg.text(fourthWord, 500, 1230);
+}
 
 function drawletters() {
   var x = 0;
@@ -54,14 +77,11 @@ function drawletters() {
 
     push();
     translate(x, y);
-    if ((imgY = (255, 0, 0))) {
-      fill(0);
-    } else {
-      fill(c);
-    }
+    fill(c);
 
     var letter = inputText.charAt(counter);
-    text(letter, 0, 0, 1000);
+    textSize(18);
+    text(letter, 0, 0);
     var letterWidth = textWidth(letter) + kerning;
     x += letterWidth;
 
@@ -80,21 +100,17 @@ function drawletters() {
 }
 
 function makeSineWave() {
-  for (var i = 0; i < 25; i++) {
-    var strokeW = random(50);
-
+  for (var i = 0; i < 1; i++) {
     var amount = 200;
     var frequency = 0.04;
-    var offset = 200;
-    rotate(30);
-    blendMode(LIGHTEST);
-    strokeWeight(strokeW);
-    stroke(225, 0, 0, random(10, 95));
+    var offset = 100;
 
-    var startY = random(5, 1748);
+    strokeWeight(0.6);
+    stroke(255, 0, 0);
+
+    var startY = 750;
 
     beginShape();
-    scale(1);
     vertex(0, startY);
     for (var c = 1; c < amount; c++) {
       var sinoffset = sin(frequency * c);
@@ -104,6 +120,23 @@ function makeSineWave() {
     }
     endShape();
     noLoop();
-    noStroke();
   }
+}
+// controlled color set
+function shakeColors() {
+  c1 = color(random(0, 10), random(0, 200), 100);
+  c2 = color(random(10, 300), 100, random(0, 100));
+}
+
+function mouseReleased() {
+  shakeColors();
+}
+
+function keyPressed() {
+  if (key == "s" || key == "S")
+    saveCanvas(
+      canvas,
+      gd.timestamp() + "_MouseX_" + mouseX + "_MouseY_" + mouseY,
+      "png"
+    );
 }

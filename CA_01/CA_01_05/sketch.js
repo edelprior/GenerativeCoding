@@ -38,7 +38,7 @@ function makeTextImage() {
 }
 
 function draw() {
-  makeRibbons();
+  //  makeRibbons();
   var x = 0;
   var y = 0;
   var counter = 10;

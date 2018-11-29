@@ -1,19 +1,19 @@
-// ----- TRYING TO MAKE A SINE FUNCTION TO CREATE THE GRAPHIC
-
-// * * * * *
-// Variables used for bottom layer type
-// * * * * *
-var img;
+//
+// - - - - -
+// - - - - -  CA FINAL WORKING
+//
 var inputText = "Generative Gestaltung";
-var fontSize = 360;
-var spacing = 10; // line height
-var kerning = 0.55; // between letters
+var fontSize = 400;
+var spacing = 12; // line height
+var kerning = 0.4; // between letters
 var textImg;
 var font;
-var textTyped = ["Gener ative Design"];
-
+var firstWord = ["Gener"];
+var secondWord = ["ative"];
+var thirdWord = ["Design"];
+var canvasWidth = 1240;
+var canvasHeight = 1748;
 // * * *
-
 
 function preload() {
   font = loadFont("data/WorkSans-ExtraLight.ttf");
@@ -21,31 +21,33 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1240, 1748);
-
-  background(247, 247, 247);
+  createCanvas(canvasWidth, canvasHeight);
+  makeTextImage();
+  background(250);
   noFill();
- textAlign(LEFT, CENTER);
-textImg = createGraphics(1240, 1748);
-  //print(img.width + '• ' + img.height);
 }
 
 function draw() {
-  makeTextImage();
   drawletters();
-  //makeSineWave();
-
+  makeSineWave();
 }
 
-// Creating the "image" the text behind
 function makeTextImage() {
   // Controls the small words "generative"
+  textImg = createGraphics(canvasWidth, canvasHeight);
   textImg.pixelDensity(1);
   textImg.background(255);
-  textImg.fill(255,0,0);
+
   textImg.textFont(font2);
-  textImg.textSize(fontSize);
-  textImg.text(textTyped, 0, 0, 0, 2000);
+
+  textImg.textSize(360);
+  textImg.text(firstWord, -10, 475);
+
+  textImg.textSize(300);
+  textImg.text(secondWord, 0, 750);
+
+  textImg.textSize(360);
+  textImg.text(thirdWord, 0, 1160);
 }
 
 function drawletters() {
@@ -61,7 +63,6 @@ function drawletters() {
     push();
     translate(x, y);
     fill(c);
-    }
 
     var letter = inputText.charAt(counter);
     text(letter, 0, 0, 1000);
@@ -80,31 +81,35 @@ function drawletters() {
       counter = 0;
     }
   }
+}
 
+function makeSineWave() {
+  for (var i = 0; i < 30; i++) {
+    var strokeW = random(45, 50);
 
-// function makeSineWave() {
-//   for (var i = 0; i < 15; i++) {
-//     var amount = 200;
-//     var frequency = 0.04;
-//     var offset = 200;
-//
-//     blendMode(DARKEST);
-//     strokeWeight(random(50));
-//     stroke(0, 0, 255, random(10, 95));
-//
-//     var startY = random(5, 1748);
-//
-//     beginShape();
-//   //  scale(1);
-//     //rotate(65);
-//     vertex(0, startY);
-//     for (var c = 1; c < amount; c++) {
-//       var sinoffset = sin(frequency * c);
-//       var sinX = c * (width / amount);
-//       var sinY = startY + sinoffset * offset;
-//       bezierVertex(sinX, sinY, sinX, sinY - 1, sinX, sinY);
-//     }
-//     endShape();
-//     noLoop();
-//   //  noStroke();
-//   }
+    var amount = 300;
+    var frequency = 0.04;
+    var offset = 200;
+
+    //blendMode(MULTIPLY);
+
+    blendMode(LIGHTEST);
+    //  blendMode(DARKEST);
+    strokeWeight(strokeW);
+    stroke(random(255), random(255), random(255));
+
+    var startY = random(5, 1748);
+
+    beginShape();
+    vertex(0, startY);
+    for (var c = 1; c < amount; c++) {
+      var sinoffset = sin(frequency * c);
+      var sinX = c * (width / amount);
+      var sinY = startY + sinoffset * offset;
+      bezierVertex(sinX, sinY, sinX, sinY - 1, sinX, sinY);
+    }
+    endShape();
+    noLoop();
+    //  noStroke();
+  }
+}

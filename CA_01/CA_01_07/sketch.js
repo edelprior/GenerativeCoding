@@ -21,7 +21,7 @@ function makeTextImage() {
   textImg.background(255);
   textImg.textFont(font2);
   textImg.textSize(fontSize);
-  textImg.text(textTyped, 0, 0, 0, 2000);
+  textImg.text(textTyped, 0, 2000);
 }
 function preload() {
   font = loadFont("data/WorkSans-ExtraLight.ttf");
@@ -80,8 +80,8 @@ function drawletters() {
 }
 
 function makeSineWave() {
-  scale(1);
-  rotate(165);
+  //scale(1);
+  //rotate(165);
   for (var i = 0; i < 15; i++) {
     var strokeW = random(50);
 
