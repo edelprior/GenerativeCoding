@@ -1,51 +1,116 @@
-// 07/01/19 Transofrmations
+// 19/01/19 Transofrmations
 // Notes
-// Manipulating the Co-Oridnate Systems
+// Drawing A Swiss Clock
+// CA_02
 
-let radius;
-let circleResolution;
-let angle;
+let x, y;
+let secondsR, minutesR, hoursR;
+let diameter, radius;
+
 function setup() {
-  let canvas = createCanvas(500,500);
-  angleMode(DEGREES);
-    noFill();
-     background(245);
-}
+  createCanvas(windowWidth, windowHeight);
 
+  radius = (width, height) / 2;
+  secondsR = radius * 0.71;
+  minutesR = radius * 0.6;
+  hoursR = radius * 0.5;
+  diameter = radius * 1.7;
+
+  x = width / 2;
+  y = height / 2;
+}
 function draw() {
-if (mouseIsPressed && mouseButton == LEFT) {
-  radius = map(mouseX, width/2, width, 1, 150);
-  circleResolution = int(map(mouseY, 0, height, 1, 18));
-  myStroke = int(map(mouseY, 0, height, 0, 10));
-  angle = 360 / circleResolution;
+  background(255);
 
-  translate(width/2, height/2);
+  // clock background
+  fill(0);
+  ellipse(x, y, diameter + 25);
 
+  fill(255);
+  ellipse(x, y, diameter);
 
-// while (mouseX > 300) {
-//   rotate(45);
-// }
-beginShape();
-  for( i = 0; i < circleResolution; i++) {
-      let posX = cos(angle * i) * (radius);
-      let posY = sin(angle * i) * (radius);
-        vertex(posX, posY);
+  // angles (sin) and (cos) start at 3 O'Clock
+  // use HALF-Pi to start at top
 
-        if (mouseY > height / 2) {
-        stroke(0,0, 150, 35);
-      }
-       else {
-         stroke(0,150,0,15);
-       }
-     }
+  let seconds = map(second(), 0, 60, 0, TWO_PI) - HALF_PI;
+  let minutes =
+    map(minute() + norm(second(), 0, 60), 0, 60, 0, TWO_PI) - HALF_PI;
+  let hours =
+    map(hour() + norm(minute(), 0, 60), 0, 24, 0, TWO_PI * 2) - HALF_PI;
 
-endShape(CLOSE);
+  // Draw the hands of the clock
 
+  // seconds hand
+
+  push();
+
+  strokeWeight(4);
+  stroke(255, 0, 0);
+  line(x, y, x + cos(seconds) * secondsR, y + sin(seconds) * secondsR);
+  fill(255, 0, 0);
+  ellipse(x + cos(seconds) * secondsR, y + sin(seconds) * secondsR, 45, 45);
+
+  pop();
+
+  // * * *
+
+  // minutes hand
+  push();
+  strokeWeight(20);
+  strokeCap(SQUARE);
+  line(x, y, x + cos(minutes) * minutesR, y + sin(minutes) * minutesR);
+
+  pop();
+
+  // * * *
+
+  // hours hand
+
+  push();
+
+  strokeWeight(30);
+  strokeCap(SQUARE);
+
+  line(x, y, x + cos(hours) * hoursR, y + sin(hours) * hoursR);
+
+  pop();
+
+  // * * *
+
+  // Draw the minute ticks
+  push();
+
+  fill(0);
+
+  beginShape(QUADS);
+  for (var a = 0; a < 360; a += 15) {
+    var angle = radians(a);
+    var x2 = x + cos(angle) * secondsR;
+    var y2 = y + sin(angle) * secondsR;
+
+    //translate(0, 0);
+    //rotate(angle);
+    vertex(x2, y2);
+    vertex(x2, y2 + 20);
+    vertex(x2 + 10, y2 + 20);
+    vertex(x2 + 10, y2);
+    //vertex();
   }
+  endShape();
+  pop();
 }
 
-
-function keyReleased() {
-  if (keyCode == DELETE || keyCode == BACKSPACE) background(245);
-  if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
-}
+//   noFill();
+//   beginShape(QUADS);
+//
+//   vertex(30, 40);
+//   vertex(30, 80);
+//   vertex(50, 80);
+//   vertex(50, 40);
+//
+//   vertex(65, 20);
+//   vertex(65, 75);
+//   vertex(85, 75);
+//   vertex(85, 20);
+//   endShape();
+// }
