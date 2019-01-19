@@ -82,7 +82,7 @@ function drawletters() {
 
 function makeSineWave() {
   for (var i = 0; i < 25; i++) {
-    var strokeW = random(30, 50);
+    var strokeW = random(45, 50);
 
     var amount = 200;
     var frequency = 0.04;

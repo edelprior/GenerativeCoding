@@ -43,7 +43,7 @@ function makeTextImage() {
 
   textImg.textFont(font2);
 
-  textImg.textSize(360);
+  textImg.textSize(36);
   textImg.text(firstWord, -10, 475);
 
   textImg.textSize(300);
@@ -88,7 +88,7 @@ function drawletters() {
 
 function makeSineWave() {
   for (var i = 0; i < 30; i++) {
-    var strokeW = random(45, 50);
+    var strokeW = random(45, 60);
 
     var amount = 300;
     var frequency = 0.04;
@@ -112,7 +112,7 @@ function makeSineWave() {
       bezierVertex(sinX, sinY, sinX, sinY - 1, sinX, sinY);
     }
     endShape();
-    noLoop();
+   noLoop();
     //  noStroke();
   }
 }
