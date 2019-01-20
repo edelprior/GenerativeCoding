@@ -11,16 +11,21 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   radius = (width, height) / 2;
-  secondsR = radius * 0.71;
-  minutesR = radius * 0.6;
-  hoursR = radius * 0.5;
-  diameter = radius * 1.7;
+  // secondsR = radius * 0.71;
+  // minutesR = radius * 0.6;
+  // hoursR = radius * 0.5;
+  // diameter = radius * 1.7;
 
   x = width / 2;
   y = height / 2;
 }
 function draw() {
   background(255);
+  strokeCap(SQUARE);
+  const rad = (width, height / 2);
+  const hourTick = 40;
+  const secondTick = 20;
+  const tickGap = 10;
 
   // clock background
   fill(0);
@@ -78,39 +83,41 @@ function draw() {
   // * * *
 
   // Draw the minute ticks
-  push();
 
-  fill(0);
-
-  beginShape(QUADS);
-  for (var a = 0; a < 360; a += 15) {
-    var angle = radians(a);
-    var x2 = x + cos(angle) * secondsR;
-    var y2 = y + sin(angle) * secondsR;
-
-    //translate(0, 0);
-    //rotate(angle);
-    vertex(x2, y2);
-    vertex(x2, y2 + 20);
-    vertex(x2 + 10, y2 + 20);
-    vertex(x2 + 10, y2);
-    //vertex();
+  for (let t = 0; t < 60; t++) {
+    push();
+    translate(width / 2, height / 2);
+    rotate(map(t, 0, 60, 0, 360));
+    if (t == 0 || t % 5 == 0) {
+      strokeWeight(10);
+      line(0, rad - hourTick, 0, rad - tickGap);
+    } else {
+      strokeWeight(3);
+      line(0, rad - secondTick, 0, rad - tickGap);
+    }
+    pop();
   }
-  endShape();
-  pop();
 }
 
-//   noFill();
+//   push();
+//
+//   fill(0);
+//
 //   beginShape(QUADS);
+//   for (var a = 0; a < 360; a += 15) {
+//     var angle = radians(a);
+//     var x2 = x + cos(angle) * secondsR;
+//     var y2 = y + sin(angle) * secondsR;
 //
-//   vertex(30, 40);
-//   vertex(30, 80);
-//   vertex(50, 80);
-//   vertex(50, 40);
-//
-//   vertex(65, 20);
-//   vertex(65, 75);
-//   vertex(85, 75);
-//   vertex(85, 20);
+//     //translate(0, 0);
+//     //rotate(angle);
+//     vertex(x2, y2);
+//     vertex(x2, y2 + 20);
+//     vertex(x2 + 10, y2 + 20);
+//     vertex(x2 + 10, y2);
+//     //vertex();
+//   }
 //   endShape();
+//   pop();
 // }
+//
