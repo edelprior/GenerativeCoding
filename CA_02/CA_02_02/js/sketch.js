@@ -1,123 +1,85 @@
-// 19/01/19 Transofrmations
-// Notes
+// 19/01/19 Transformations
 // Drawing A Swiss Clock
 // CA_02
+// Edel Prior
 
-let x, y;
-let secondsR, minutesR, hoursR;
-let diameter, radius;
+let radius, diameter, hourTick, minuteTick, tickWidth;
 
 function setup() {
+  angleMode(DEGREES);
   createCanvas(windowWidth, windowHeight);
-
-  radius = (width, height) / 2;
-  // secondsR = radius * 0.71;
-  // minutesR = radius * 0.6;
-  // hoursR = radius * 0.5;
-  // diameter = radius * 1.7;
-
-  x = width / 2;
-  y = height / 2;
+  radius = width / 4;
+  diameter = width / 2;
+  hourTick = 70;
+  minuteTick = 30;
+  tickWidth = 2;
 }
+
 function draw() {
-  background(255);
   strokeCap(SQUARE);
-  const rad = (width, height / 2);
-  const hourTick = 40;
-  const secondTick = 20;
-  const tickGap = 10;
 
-  // clock background
+  //clock bg
+  push();
+  translate(width / 2, height / 2);
+  ellipse(0, 0, diameter);
+  pop();
+
+  // ** HANDS
+  //
+  // map function for hands
+  let hourHand = map(hour(), 0, 24, 0, 360);
+
+  push();
+  translate(width / 2, height / 2);
+  rotate(hourHand + 270);
+  //fill(0);
+  strokeWeight(35);
+  //stroke(255, 0, 0);
+  // beginShape();
+  // vertex(0, 0);
+  // vertex(0, 100);
+  // vertex(150, 100);
+  // vertex(-85, 0);
+  // endShape(CLOSE);
+  line(-85, 0, radius - 160, 0);
+  pop();
+
+  let minuteHand = map(minute(), 0, 60, 0, 360);
+  //minutes
+  push();
+  translate(width / 2, height / 2);
+  rotate(minuteHand + 270);
   fill(0);
-  ellipse(x, y, diameter + 25);
-
-  fill(255);
-  ellipse(x, y, diameter);
-
-  // angles (sin) and (cos) start at 3 O'Clock
-  // use HALF-Pi to start at top
-
-  let seconds = map(second(), 0, 60, 0, TWO_PI) - HALF_PI;
-  let minutes =
-    map(minute() + norm(second(), 0, 60), 0, 60, 0, TWO_PI) - HALF_PI;
-  let hours =
-    map(hour() + norm(minute(), 0, 60), 0, 24, 0, TWO_PI * 2) - HALF_PI;
-
-  // Draw the hands of the clock
-
-  // seconds hand
-
-  push();
-
-  strokeWeight(4);
-  stroke(255, 0, 0);
-  line(x, y, x + cos(seconds) * secondsR, y + sin(seconds) * secondsR);
-  fill(255, 0, 0);
-  ellipse(x + cos(seconds) * secondsR, y + sin(seconds) * secondsR, 45, 45);
-
-  pop();
-
-  // * * *
-
-  // minutes hand
-  push();
-  strokeWeight(20);
-  strokeCap(SQUARE);
-  line(x, y, x + cos(minutes) * minutesR, y + sin(minutes) * minutesR);
-
-  pop();
-
-  // * * *
-
-  // hours hand
-
-  push();
-
   strokeWeight(30);
-  strokeCap(SQUARE);
-
-  line(x, y, x + cos(hours) * hoursR, y + sin(hours) * hoursR);
-
+  line(-80, 0, radius - tickWidth - 65, 0);
   pop();
 
-  // * * *
+  let secondHand = map(second(), 0, 60, 0, 360);
+  //seconds line
+  push();
+  translate(width / 2, height / 2);
+  rotate(secondHand + 270);
+  strokeWeight(15);
+  stroke(225, 0, 0);
+  line(-80, 0, radius - 110, 0);
+  fill(225, 0, 0);
+  ellipse(0, 0, 35);
+  ellipse(radius - 110, 0, 60);
+  pop();
 
-  // Draw the minute ticks
-
+  //clock ticks
   for (let t = 0; t < 60; t++) {
     push();
     translate(width / 2, height / 2);
     rotate(map(t, 0, 60, 0, 360));
-    if (t == 0 || t % 5 == 0) {
-      strokeWeight(10);
-      line(0, rad - hourTick, 0, rad - tickGap);
+    if (t == 0 || t % 5 === 0) {
+      //check if its an hour
+      strokeWeight(35);
+      line(0, radius - hourTick, 0, radius - tickWidth);
     } else {
-      strokeWeight(3);
-      line(0, rad - secondTick, 0, rad - tickGap);
+      strokeWeight(15);
+      line(0, radius - minuteTick, 0, radius - tickWidth);
     }
     pop();
   }
 }
-
-//   push();
-//
-//   fill(0);
-//
-//   beginShape(QUADS);
-//   for (var a = 0; a < 360; a += 15) {
-//     var angle = radians(a);
-//     var x2 = x + cos(angle) * secondsR;
-//     var y2 = y + sin(angle) * secondsR;
-//
-//     //translate(0, 0);
-//     //rotate(angle);
-//     vertex(x2, y2);
-//     vertex(x2, y2 + 20);
-//     vertex(x2 + 10, y2 + 20);
-//     vertex(x2 + 10, y2);
-//     //vertex();
-//   }
-//   endShape();
-//   pop();
-// }
-//
