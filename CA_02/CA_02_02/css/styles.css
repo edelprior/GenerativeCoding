@@ -1,0 +1,17 @@
+#header {
+    margin-top: 60px;
+}
+
+body {
+  font-weight: 300;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+h2 {
+  margin-left: -130px;
+}
+canvas {
+  margin-top: 10px;
+  margin-left: 40px;
+}
