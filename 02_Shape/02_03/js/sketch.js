@@ -1,123 +1,122 @@
-// 19/01/19 Transofrmations
-// Notes
-// Drawing A Swiss Clock
-// CA_02
+/*
+Creative Coding
+Author: Cillian Tighe
+Student No: N00152737
+*/
 
-let x, y;
-let secondsR, minutesR, hoursR;
-let diameter, radius;
+// Variables used to create the intro text display
+// 'desiredWidth' is used for the width of the divider between text
+// 'dividerWidth' is the current size for the divider
+// 'displayTime' is the amount of time (seconds) for the text to be displayed
+// 'timePassed' is used to keep track of the time passed since the animation started
+// 'displayText' is a boolean to keep track if the text is being displayed
+// 'textAlpha' is the variable to change the text's opacity
+var desiredWidth = 750;
+var dividerWidth = 0;
+var displayTime = 5;
+var timePassed = 0;
+var textAlpha = 1;
+var headerFont = "";
+var descFont = "";
 
+var seedNum = 0;
+var shapeCap = "";
+
+var noOfShapes = 30;
+var shapeWidth = 0;
+var shapeHeight = 0;
+
+// The 'setup' function is only called once. Everything within the function is executed once
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // Creates the canvas for the animation to be displayed on
+  var canvas = createCanvas(windowWidth, windowHeight);
+  shapeWidth = width / noOfShapes;
+  shapeHeight = height / noOfShapes;
 
-  radius = (width, height) / 2;
-  // secondsR = radius * 0.71;
-  // minutesR = radius * 0.6;
-  // hoursR = radius * 0.5;
-  // diameter = radius * 1.7;
+  shapeCap = SQUARE;
 
-  x = width / 2;
-  y = height / 2;
+  // Setting the colour mode of the canvas
+  // Using the 'rectMode' function to draw rectangles from the center
+  colorMode(HSB, 360, 100, 100);
+  rectMode(CENTER);
+  ellipseMode(CORNER);
 }
+
+// The 'draw' function is called in a loop. Everything that is in the function is executed continuously
 function draw() {
-  background(255);
-  strokeCap(SQUARE);
-  const rad = (width, height / 2);
-  const hourTick = 40;
-  const secondTick = 20;
-  const tickGap = 10;
+  // Time passed will hold the amount of time passed in seconds
+  timePassed = millis() / 1000;
 
-  // clock background
-  fill(0);
-  ellipse(x, y, diameter + 25);
+  randomSeed(seedNum);
 
-  fill(255);
-  ellipse(x, y, diameter);
-
-  // angles (sin) and (cos) start at 3 O'Clock
-  // use HALF-Pi to start at top
-
-  let seconds = map(second(), 0, 60, 0, TWO_PI) - HALF_PI;
-  let minutes =
-    map(minute() + norm(second(), 0, 60), 0, 60, 0, TWO_PI) - HALF_PI;
-  let hours =
-    map(hour() + norm(minute(), 0, 60), 0, 24, 0, TWO_PI * 2) - HALF_PI;
-
-  // Draw the hands of the clock
-
-  // seconds hand
-
-  push();
-
-  strokeWeight(4);
-  stroke(255, 0, 0);
-  line(x, y, x + cos(seconds) * secondsR, y + sin(seconds) * secondsR);
-  fill(255, 0, 0);
-  ellipse(x + cos(seconds) * secondsR, y + sin(seconds) * secondsR, 45, 45);
-
-  pop();
-
-  // * * *
-
-  // minutes hand
-  push();
-  strokeWeight(20);
-  strokeCap(SQUARE);
-  line(x, y, x + cos(minutes) * minutesR, y + sin(minutes) * minutesR);
-
-  pop();
-
-  // * * *
-
-  // hours hand
-
-  push();
-
-  strokeWeight(30);
-  strokeCap(SQUARE);
-
-  line(x, y, x + cos(hours) * hoursR, y + sin(hours) * hoursR);
-
-  pop();
-
-  // * * *
-
-  // Draw the minute ticks
-
-  for (let t = 0; t < 60; t++) {
-    push();
-    translate(width / 2, height / 2);
-    rotate(map(t, 0, 60, 0, 360));
-    if (t == 0 || t % 5 == 0) {
+  background(0, 0, 100);
+  for (var y = 0; y <= noOfShapes; y++) {
+    for (var x = 0; x <= noOfShapes; x++) {
+      let rand = Math.floor(random(0, 2));
+      push();
+      translate(x * shapeWidth, y * shapeHeight);
+      //rotate(radians(90));
+      fill('#000000');
       strokeWeight(10);
-      line(0, rad - hourTick, 0, rad - tickGap);
-    } else {
-      strokeWeight(3);
-      line(0, rad - secondTick, 0, rad - tickGap);
+      strokeCap(shapeCap);
+      stroke('#000000')
+      //scale(1 / 3);
+      if (rand === 0) {
+        strokeWeight(map(constrain(mouseX, 0, width), 0, width, 1, 10));
+        line(-shapeWidth / 2, shapeHeight / 2, shapeWidth / 2, -shapeHeight / 2);
+      } else {
+        strokeWeight(map(constrain(mouseY, 0, height), 0, height, 1, 10));
+        line(-shapeWidth / 2, -shapeHeight / 2, shapeWidth / 2, shapeHeight / 2);
+      }
+      pop();
     }
-    pop();
+  }
+
+  //---------------------------------------------------------
+  // ---------- FUNCTION FOR DISPLAYING INTRO TEXT ----------
+  //---------------------------------------------------------
+  if (textAlpha > 0) {
+    // Setting the font size, type and alignment for the intro text
+    textSize(60);
+    textFont(headerFont);
+    textAlign(CENTER);
+    fill(0, 0, 0, textAlpha);
+    text("Generative Design: Shape", width / 2, height / 2.1);
+
+    // The rectangle below will act as a divider between the two text fields
+    rect(width / 2, height / 2, dividerWidth, 3);
+
+    // Changing the font size, type for the font below
+    textSize(40);
+    textFont(descFont);
+    text("Nested Patterns", width / 2, height / 1.8);
+
+    // The condition below checks to see if the desired display time for the text
+    // has been reached and if the size of the divider has reached it's size
+    // If it has, it will then start to reduce the text's opacity
+    if (timePassed > displayTime && dividerWidth >= desiredWidth) {
+      textAlpha -= 0.02;
+    } else if (dividerWidth <= desiredWidth) {
+      dividerWidth += 5;
+    }
+  } else {
+    textSize(20);
+    textFont(headerFont);
+    textAlign(LEFT);
+    fill(0, 0, 0);
+    text("03_nested_patterns", 25, 30);
   }
 }
 
-//   push();
-//
-//   fill(0);
-//
-//   beginShape(QUADS);
-//   for (var a = 0; a < 360; a += 15) {
-//     var angle = radians(a);
-//     var x2 = x + cos(angle) * secondsR;
-//     var y2 = y + sin(angle) * secondsR;
-//
-//     //translate(0, 0);
-//     //rotate(angle);
-//     vertex(x2, y2);
-//     vertex(x2, y2 + 20);
-//     vertex(x2 + 10, y2 + 20);
-//     vertex(x2 + 10, y2);
-//     //vertex();
-//   }
-//   endShape();
-//   pop();
-// }
-//
+function mousePressed(){
+  seedNum = Math.floor(random(100));
+}
+
+// Using the built-in function 'keyPressed' to check whether the user presses a key
+// If the user presses the 's' key, the script will export an image of the canvas
+function keyPressed() {
+  if (key == "s" || key == "S") saveCanvas(canvas, "03_nested_patterns", "png");
+  if (key == 1) shapeCap = ROUND;
+  if (key == 2) shapeCap = SQUARE;
+  if (key == 3) shapeCap = PROJECT;
+}
