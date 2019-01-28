@@ -1,24 +1,20 @@
 
-let tileCount = 10;
+let tileCount = 15;
 let tileWidth;
-let strokeColor;
-let minRadius = 1;
-let maxRadius = 10;
-let minStroke = 1;
-let maxStroke = 10;
-let actRandomSeed = 1000;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
   tileWidth = width/tileCount;
-  strokeColor  = color(255,0,0, 85);
+
+  strokeColor  = color(250,215,0);
+  rectColor = color(0,0,185);
   rectMode = (CENTER);
+
   }
 
 function draw() {
-  randomSeed(actRandomSeed);
-  background(255);;
-  noFill();
+  background(255, 245,245);
 
   for (let gridX = 0; gridX < tileCount; gridX++) {
     for (let gridY = 0; gridY < tileCount; gridY++) {
@@ -26,20 +22,29 @@ function draw() {
       let posX = gridX * tileWidth;
       let posY = gridY * tileWidth;
 
-      let circleRaidus = map(constrain(mouseX, 0, width), 0, width, 10,40);
-      let circleStroke = map(constrain(mouseY,0,height),0, height, 1,20);
+      let rectWidth = map(constrain(mouseX, 0, width), 0, width, 10,60);
+      let rectStroke = map(constrain(mouseY,0,height),0, height, 1,30);
+
 
       stroke(strokeColor);
-      strokeWeight(circleStroke);
-
-      let shiftX = random(-mouseX, mouseX) / 10;
-      let shiftY = random(-mouseY, mouseY) / 10;
-
+      strokeWeight(rectStroke);
+      fill(rectColor);
       push();
           translate(posX, posY);
-          rotate(mouseX / 600);
-          rect(0,0,circleRaidus, circleRaidus);
+          rotate(mouseX / 100);
+        polygon (0, 0,rectWidth,5);
       pop();
     }
   }
+}
+
+function polygon(x, y, radius, npoints) {
+  var angle = TWO_PI / npoints;
+  beginShape();
+  for (var a = 0; a < TWO_PI; a += angle) {
+    var sx = x + cos(a) * radius;
+    var sy = y + sin(a) * radius;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
 }

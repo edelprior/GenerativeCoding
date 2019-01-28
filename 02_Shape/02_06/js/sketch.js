@@ -1,7 +1,7 @@
 
 // Image loading
 
-let tileCount = 15;
+let tileCount = 35;
 let tileWidth;
 let img;
 
@@ -15,7 +15,7 @@ function setup() {
 }
 
 function draw() {
-  background(0,0,128, 45);;
+  background(255, 245,245, 90);;
 
   for (let gridX = 0; gridX < tileCount; gridX++) {
     for (let gridY = 0; gridY < tileCount; gridY++) {
@@ -27,7 +27,7 @@ function draw() {
       push();
           translate(posX, posY);
           rotate(angle);
-          image(img, 0,0,tileWidth - 20,tileWidth  -20);
+          image(img, 0,0,tileWidth-10,tileWidth-10);
       pop();
     }
   }
