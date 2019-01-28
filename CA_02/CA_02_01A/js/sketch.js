@@ -1,3 +1,10 @@
+// CA_02
+// First Attempt in Class 21/_01/19
+// Edel Prior
+// N00153748
+
+
+
 let minuteStrokeLength = 10;
 let minuteStrokeWeight = 4;
 let minuteStrokeColor;
