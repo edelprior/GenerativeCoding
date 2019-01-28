@@ -72,7 +72,7 @@ function draw() {
         fill(0,0,128);
         strokeWeight(circleStroke);
     //  ellipse(shiftX,shiftY,circleRadius, circleRadius);
-  arc(shiftX,shiftY,circleRadius,circleRadius, TWO_PI, PI);
+        arc(shiftX,shiftY,circleRadius,circleRadius, TWO_PI, PI);
 
 
 
