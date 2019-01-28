@@ -15,7 +15,7 @@ function setup() {
 }
 
 function draw() {
-  background(0,0,0,45);;
+  background(0,0,128, 45);;
 
   for (let gridX = 0; gridX < tileCount; gridX++) {
     for (let gridY = 0; gridY < tileCount; gridY++) {
