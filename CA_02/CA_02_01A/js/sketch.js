@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+// CA_02
+// First Attempt in Class 21/_01/19
+// Edel Prior
+// N00153748
+
+
+
+>>>>>>> 64111124579154268bb66a4098a3ec15cd13d505
 let minuteStrokeLength = 10;
 let minuteStrokeWeight = 4;
 let minuteStrokeColor;

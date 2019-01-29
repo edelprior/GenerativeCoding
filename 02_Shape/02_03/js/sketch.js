@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 Creative Coding
 Author: Cillian Tighe
@@ -22,12 +23,17 @@ var descFont = "";
 var seedNum = 0;
 var shapeCap = "";
 
+=======
+
+var seedNum = 0;
+>>>>>>> 64111124579154268bb66a4098a3ec15cd13d505
 var noOfShapes = 30;
 var shapeWidth = 0;
 var shapeHeight = 0;
 
 // The 'setup' function is only called once. Everything within the function is executed once
 function setup() {
+<<<<<<< HEAD
   // Creates the canvas for the animation to be displayed on
   var canvas = createCanvas(windowWidth, windowHeight);
   shapeWidth = width / noOfShapes;
@@ -51,10 +57,22 @@ function draw() {
 
   background(0, 0, 100);
   for (var y = 0; y <= noOfShapes; y++) {
+=======
+   createCanvas(windowWidth, windowHeight);
+  shapeWidth = width / noOfShapes;
+  shapeHeight = height / noOfShapes;
+  rectMode(CENTER);
+}
+function draw() {
+  background(0,0,125);
+  randomSeed(seedNum);
+    for (var y = 0; y <= noOfShapes; y++) {
+>>>>>>> 64111124579154268bb66a4098a3ec15cd13d505
     for (var x = 0; x <= noOfShapes; x++) {
       let rand = Math.floor(random(0, 2));
       push();
       translate(x * shapeWidth, y * shapeHeight);
+<<<<<<< HEAD
       //rotate(radians(90));
       fill('#000000');
       strokeWeight(10);
@@ -120,3 +138,19 @@ function keyPressed() {
   if (key == 2) shapeCap = SQUARE;
   if (key == 3) shapeCap = PROJECT;
 }
+=======
+      fill(250,215,0);
+      strokeCap(PROJECT);
+      stroke(250,215,0)
+      if (rand === 0) {
+        strokeWeight(map(mouseX, 0, width, 1, 10));
+        line(-shapeWidth /4 , shapeHeight/ 4, shapeWidth/4, -shapeHeight/4);
+      } else {
+        strokeWeight(map(mouseY, 0, height, 1, 10));
+        line(-shapeWidth / 4, -shapeHeight / 4, shapeWidth / 4, shapeHeight / 4);
+      }
+      pop();
+    }
+  }
+}
+>>>>>>> 64111124579154268bb66a4098a3ec15cd13d505
