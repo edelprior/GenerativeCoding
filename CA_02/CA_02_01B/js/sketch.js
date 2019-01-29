@@ -48,7 +48,7 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  background(255, 245, 245);
   strokeCap(SQUARE);
 
   //hourHand
