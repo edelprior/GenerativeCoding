@@ -1,36 +1,44 @@
-//Open Type Intro
+let DrawnText;
 let font;
-let textTyped = "e";
+let pixelDensity = 8;
+let fontSize = 550;
+let textTyped = "p5.js";
+
+
+function preload() {
+  font = loadFont("data/WorkSans-SemiBold.ttf");
+}
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  opentype.load("data/WorkSans-Black.ttf", function(err, f) {
-    if (err) {
-      console.log(error);
-    } else {
-      font = f;
-      loop();
-    }
-  });
+  textGraphic();
+  noStroke();
+  noFill();
 }
+
 function draw() {
-  if (!font) return;
+  background(215,245,245);
 
-  background(255);
-  translate(windowWidth / 2, windowHeight / 2);
-
-  if (textTyped.length > 0) {
-    let fontPath = font.getPath(textTyped, 0, 0, 600);
-    let path = new g.Path(fontPath.commands);
-    path = g.resampleByLength(path, 0.25);
-
-    fill(0);
-    noStroke();
-    let diameter = 5;
-
-    for (let i = 0; i < path.commands.length; i++) {
-      let point = path.commands[i];
-      ellipse(point.x, point.y, diameter);
+for (let y = 0; y < DrawnText.height; y += pixelDensity) {
+    for (let x = 0; x < DrawnText.width; x += pixelDensity) {
+      let index = (x + y * DrawnText.width) * 4;
+      if (DrawnText.pixels[index] <= 128) {
+        fill(2250,215,0);
+        ellipse(x, y, 5, 5);
+      }
     }
   }
+}
+
+function textGraphic() {
+  DrawnText = createGraphics(width, height);
+  DrawnText.pixelDensity(1);
+  DrawnText.background(255);
+  DrawnText.fill(0);
+  DrawnText.textSize(fontSize);
+  DrawnText.textAlign(CENTER);
+  DrawnText.textFont(font);
+  DrawnText.text(textTyped, DrawnText.width / 2, DrawnText.height / 2);
+  DrawnText.loadPixels();
 }
