@@ -12,3 +12,4 @@
 4. [Introducing Shape to the Screen and the User](02_Shape/)
 5. [Assignment Two, Building a Swiss Clock](Projects/CA_02)
 6. [Introducing Type to the Screen and the User](03_Type/)
+7. [Assignment Three, putting the power in the users hands with Type](Projects/CA_03)
