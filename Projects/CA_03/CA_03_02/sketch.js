@@ -20,7 +20,7 @@ let distance = 1000;
 
 function preload() {
   img = loadImage(load_image);
-  font = loadFont("data/WorkSans-Black.ttf");
+  font = loadFont("data/WorkSans-SemiBold.ttf");
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
