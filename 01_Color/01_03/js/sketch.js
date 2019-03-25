@@ -6,17 +6,17 @@
 
 function setup() {
 
-  let canvas = createCanvas(500, 500);
-  colorMode(HSB, 360, 100, 100);
+  let canvas = createCanvas(windowWidth,windowHeight);
+  colorMode(HSB, 600, 350, 650);
   rectMode(CENTER);
   noStroke();
 }
 
 function draw() {
-
+  background(0,0,20);
   let numberOfSteps = 20;
   let angleSize = 360 / numberOfSteps;
-  let radius = 200;
+  let radius = width / 5;
 
 
   beginShape(TRIANGLE_FAN);

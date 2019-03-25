@@ -21,26 +21,26 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
   noLoop();
-}
+
 
 for (i = 0; i < tileCountX; i++) {
     hueValue[i] = random(50, 150);
     satValue[i] = 150;
     brightValue[i] = random(20, 40);
   }
-
+}
 function draw() {
 
-  // for (i = 0; i < colorCount; i++) {
-  //   if (i % 2 == 0) {
-  //     hueValue[i] = random(50, 150);
-  //     satValue[i] = 150;
-  //     brightValue[i] = random(20, 40);
-  //   } else {
-  //     hueValue[i] = 100;
-  //     satValue[i] = random(40, 80);
-  //     brightValue[i] = random(60, 100);
-  //
+  for (i = 0; i < colorCount; i++) {
+    if (i % 2 == 0) {
+      hueValue[i] = random(50, 150);
+      satValue[i] = 150;
+      brightValue[i] = random(20, 40);
+    } else {
+      hueValue[i] = 100;
+      satValue[i] = random(40, 80);
+      brightValue[i] = random(60, 100);
+
 var counter = 0;
 
 for(var gridY = 0; gridY < tileCountY; gridY++){

@@ -14,7 +14,7 @@ function preload() {
 
 function setup(){
 
-createCanvas(500,500);
+createCanvas(windowWidth,windowHeight);
 noCursor();
 noStroke();
 }
@@ -22,7 +22,7 @@ noStroke();
 
 function draw() {
 
-let tileCount = floor(width / max(mouseX, 6));
+let tileCount = floor(width / max(mouseX, 20));
 let rectSize = width/tileCount;
 
 img.loadPixels();
