@@ -71,8 +71,8 @@ function draw() {
 
 function shakeColors() {
   for (let i = 0; i < tileSizeY; i++) {
-    colorsLeft[i] = color(random(0, 10), random(0, 200), 100);
-    colorsRight[i] = color(random(10, 300), 100, random(0, 100));
+    colorsLeft[i] = color(random(100, 300), 100, random(100, 300));
+    colorsRight[i] = color(random(100, 300), 100, random(100, 300));
   }
 }
 //
