@@ -16,7 +16,7 @@ let txtSize = 400;
 let txtTyped = 'p5.js';
 let font;
 let lerpDis = 0;
-let distance = 1000;
+let distance = 500;
 
 function preload() {
   img = loadImage(load_image);
@@ -70,7 +70,7 @@ function draw() {
   drawPoints();
 
   if (lerpDis < 1){
-    lerpDis = lerpDis + 0.04;
+    lerpDis = lerpDis + noise(.001);
   } else {
     lerpDis = 1;
   }
@@ -138,5 +138,5 @@ function update() {
   let size = txtSizeDrop.value();
   txtSize = int(size);
   txtGraphic();
-  lerpDis = 0;
+  lerpDis = 10;
 }
