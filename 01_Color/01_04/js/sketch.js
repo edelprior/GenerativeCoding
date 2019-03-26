@@ -21,7 +21,7 @@ let interpolateShortest = true;
 
 function setup() {
 
-  createCanvas(500, 500);
+  createCanvas(windowWidth,windowHeight);
   colorMode(HSB, 360, 100, 100);
   noStroke();
   shakeColors();
@@ -30,8 +30,8 @@ function setup() {
 
 function draw() {
 
-  tileSizeX = int(map(mouseX, 0, width, 2, 100));
-  tileSizeY = int(map(mouseY, 0, height, 2, 10));
+  tileSizeX = int(map(mouseX, 0, width, 2, 50));
+  tileSizeY = int(map(mouseY, 0, height, 2, 8));
 
   let tileWidth = width / tileSizeX;
   let tileHeight = height / tileSizeY;
@@ -61,8 +61,8 @@ function draw() {
       let Yposition = tileHeight * gridY;
 
       fill(interColor);
-      rect(Xposition, Yposition, tileWidth, tileHeight);
-
+    //  ellipse(Xposition, Yposition, tileWidth, tileHeight);
+      polygon (Xposition, Yposition, tileWidth, 5);
       colors.push(interColor);
     }
   }
@@ -71,8 +71,8 @@ function draw() {
 
 function shakeColors() {
   for (let i = 0; i < tileSizeY; i++) {
-    colorsLeft[i] = color(random(0, 10), random(0, 200), 100);
-    colorsRight[i] = color(random(10, 300), 100, random(0, 100));
+    colorsLeft[i] = color(random(100, 300), 100, random(100, 300));
+    colorsRight[i] = color(random(100, 300), 100, random(100, 300));
   }
 }
 //
@@ -81,7 +81,16 @@ function shakeColors() {
 // }
 
 
-
+function polygon(x, y, radius, npoints) {
+  var angle = TWO_PI / npoints;
+  beginShape();
+  for (var a = 0; a < TWO_PI; a += angle) {
+    var sx = x + cos(a) * radius;
+    var sy = y + sin(a) * radius;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
+}
 
 function keyPressed() {
   if (key == 's' || key == 'S') saveCanvas(canvas, gd.timestamp() + '_MouseX_' + mouseX + '_MouseY_' + mouseY, 'png');

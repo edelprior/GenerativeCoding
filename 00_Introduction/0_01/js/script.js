@@ -1,20 +1,25 @@
-
-
-var tileCountX = 2;
-var tileCountY = 10;
-
-// I love John Montayne! <3 <3 <3
-
+var stepX = 495;
+var stepY = 470;
 function setup(){
-createCanvas(900,500);
+createCanvas(windowWidth, windowHeight);
 noStroke();
-colorMode(HSB, 360, 10, 10);
+colorMode(HSB, width, height, 100);
 
 
 }
 
 
 function draw() {
-tileCountX = int(map(mouseX,0,width,2,100));
-tileCountY = int(map(mouseY,0,width,2,10));
 
+    stepX = mouseX/5;
+    stepY = mouseY/5;
+
+    for(var gridY=0; gridY<height; gridY=gridY+stepX){
+
+        for(var gridX=0; gridX<width; gridX=gridX+stepY) {
+
+            fill(gridX,height-gridY, 100);
+            rect(gridX,gridY,stepX,stepY);
+        }
+    }
+}

@@ -28,6 +28,3 @@ The system variable mouseX always contains the current horizontal position of th
   Syntax for rectangle: ( X Location, Y Location, Width of Rect, Height of Rect);
 
 ___
-
-# What does it look like on the Screen?
-![](css/color_spectrum_01.png)
